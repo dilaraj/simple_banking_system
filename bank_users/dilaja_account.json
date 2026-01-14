@@ -1,0 +1,13 @@
+{
+      "fname": "Dilara",
+      "lname": "Ajaj",
+      "uname": "dilaja",
+      "dob": "28/04/2003",
+      "email": "dilara.ajaj@gmail.com",
+      "phonenum": "0469792181",
+      "password": "ilovefood",
+      "debit_info": {
+            "debit_num": 2352251775943205,
+            "debit_pin": "1507"
+      }
+}

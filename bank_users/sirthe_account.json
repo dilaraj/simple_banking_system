@@ -1,0 +1,13 @@
+{
+      "fname": "sir jiggles",
+      "lname": "the 3rd",
+      "uname": "sirthe",
+      "dob": "12/12/1956",
+      "email": "sirjiggles3@gmail.com",
+      "phonenum": "04675489",
+      "password": "imthealphajiggles123",
+      "debit_info": {
+            "debit_num": 2700035462025055,
+            "debit_pin": "8675"
+      }
+}
