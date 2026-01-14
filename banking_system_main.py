@@ -1,37 +1,63 @@
-import tkinter as tk
+from bank_user import Bank_User
 
-root = tk.Tk()
-root.title('First Tkinter Window')
+class Banking_System:
+    """Main class to run banking system"""
+    def __init__(self):
+        pass
 
-name_var = tk.StringVar()
-passw_var = tk.StringVar()
+    def run_system(self):
+        print('Bank is running')
+        self._store_user_information()
 
-def submit():
-    name = name_var.get()
-    password = passw_var.get()
+    
+    def display_bank_menu(self):
+        print('Welcome to the Bank')
+        print('Please select an option using the corresponding number:')
+        print('1. Create an Account')
+        print('2. Credit a debit account')
+        print('3. Quit')
+        option = input('Please enter an option: ')
 
-    print('The name is: ' + name)
-    print('The password is: ' + password)
+        return option
+        
+    
+    def create_new_user(self):
+        """gather information to create a new user"""
+        
+        print('Create an account:')
+        fname = input(f'First Name: ')
+        lname = input (f'Last Name: ')
+        dob = input(f'DOB: ')
+        email = input(f'Email: ')
+        phonenum = input(f'Phone number: ')
+        password = input(f'Password: ')
 
-    name_var.set('')
-    passw_var.set('')
+        #create a new user object
+        new_user = Bank_User(fname, lname, dob, email, phonenum, password)
+        username = (fname[0:3] + lname[0:3]).lower()
+        user_dict = {
+            'fname': fname,
+            'lname': lname,
+            'uname': username,
+            'dob':dob,
+            'email': email,
+            'phonenum': phonenum,
+            'password': password,
+            }
 
-#creating a label and entry for name and password wusing the widget label and entry
-name_label = tk.Label(root, text='Username', font=('calibre', 10, 'bold'))
-name_entry = tk.Entry(root, textvariable=name_var, font=('calibre', 10, 'bold'))
+        #return an array of needed information
+        return [new_user, user_dict, username]
+    
+    
+    def _store_user_information(self):
+        """Store new user in custom file"""
+        new_user = self.create_new_user()
 
-passw_label = tk.Label(root, text='Password', font=('calibre', 10, 'bold'))
-passw_entry = tk.Entry(root, textvariable=passw_var, font=('calibre', 10, 'bold'), show='*')
+        new_user[0].store_user(new_user[1], new_user[2])
+        print(f'Account successfully created!\nYour username is: {new_user[2]}\nPlease use this username when signing in')
+                                
 
-#creating btn using widget btn for submit function
-sub_btn = tk.Button(root, text='Submit', command=submit)
 
-#placing elemtns using grid method
-name_label.grid(row=0,column=0)
-name_entry.grid(row=0, column=1)
-passw_label.grid(row=1, column=0)
-passw_entry.grid(row=1, column=1)
-sub_btn.grid(row=2, column=1)
-
-#performing infinite loop for window display
-root.mainloop()
+#running banking system
+bs = Banking_System()
+bs.run_system()
